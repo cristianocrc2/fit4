@@ -25,10 +25,12 @@
 				<div class="col-lg-12 col-md-12">
 					<h1>Transmissão Nota Fiscal Eletrônica - FIT4</h1>
 					<div class="upload_div">
-						<div class="form-group">
-							<label for="file">XML File</label>
-							<input type="file" name="xml" id="xml">
-						</div>
+						<form method="post" action="">
+							<div class="form-group">
+								<label for="file">XML File</label>
+								<input type="file" name="xml" id="xml">
+							</div>
+						</form>						
 					</div>
 				</div>
 			</div>
