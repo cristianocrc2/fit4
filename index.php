@@ -25,10 +25,12 @@
 				<div class="col-lg-12 col-md-12">
 					<h1>Transmissão Nota Fiscal Eletrônica - FIT4</h1>
 					<div class="upload_div">
-						<form method="post" action="">
+						<form method="post" action="controller.php" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="file">XML File</label>
-								<input type="file" name="xml" id="xml">
+								<input type="hidden" name="password" value="senha">
+								<input type="file" name="xml" id="xml"><br />
+								<input type="submit" name="submit" value="Enviar Nota" class="btn btn-default">
 							</div>
 						</form>						
 					</div>
