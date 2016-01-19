@@ -15,13 +15,12 @@
 
 		if (move_uploaded_file($_FILES['xml']['tmp_name'], $uploadfile)) { //Se conclui o upload
 		    
-			$nfe = new ToolsNFe('../../config/config.json');
+			$nfe = new ToolsNFe('C:/xampp/htdocs/cristiano/fit4/nfe/config.json');
 			$nfe->setModelo('55');
 
 			$aResposta = array();
-			$chave = '35150258716523000119550010000000091000000090';
 			$tpAmb = '2';
-			$aXml = file_get_contents("/var/www/nfe/homologacao/assinadas/$chave-nfe.xml");
+			$aXml = file_get_contents($uploadfile);
 			$idLote = '';
 			$indSinc = '0';
 			$flagZip = false;
