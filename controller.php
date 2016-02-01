@@ -63,8 +63,18 @@
 
 ##################################################### INUTILIZAÇÃO ##############################################################################333
 		if(isset($_POST['function']) && $_POST['function'] == "inutilizacao"){ //SE FOR inutilização DE NOTA FISCAL
-
-			echo "inutilização";
+			$aResposta = array();
+			$nSerie = $_POST['serie'];
+			$nIni = $_POST['ininmr'];
+			$nFin = $_POST['fimnmr'];
+			$xJust = $_POST['justificativa'];
+			$tpAmb = '2';
+			$xml = $nfe->sefazInutiliza($nSerie, $nIni, $nFin, $xJust, $tpAmb, $aResposta);
+			echo '<br><br><PRE>';
+			echo htmlspecialchars($nfe->soapDebug);
+			echo '</PRE><BR>';
+			print_r($aResposta);
+			echo "<br>";
 		}
 
 ##########################################3# FIM INUTILIZAÇÃO ###############################################################################
