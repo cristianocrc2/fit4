@@ -7,6 +7,9 @@
 	
 	if(isset($_POST['password']) && $_POST['password'] == "senha"){ //Se estiver setada e correta a senha de upload
 
+		$nfe = new ToolsNFe('C:/xampp/htdocs/cristiano/fit4/nfe/config.json');
+		$nfe->setModelo('55');
+
 
  ############################################################# TRANSMISSÃO NFE ##########################################################
 		if(isset($_POST['function']) && $_POST['function'] == "transmissao"){ //SE FOR TRANSMISSÃO DE NOTA FISCAL
@@ -19,10 +22,6 @@
 
 			if (move_uploaded_file($_FILES['xml']['tmp_name'], $uploadfile)) { //Se conclui o upload
 			    
-				$nfe = new ToolsNFe('C:/xampp/htdocs/cristiano/fit4/nfe/config.json');
-				$nfe->setModelo('55');
-				
-
 				// ========================= TRANSMISSÃO SEFAZ =====================
 
 				$tpAmb = '2'; //tipo de ambiente (Homologação)

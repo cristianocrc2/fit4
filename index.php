@@ -25,7 +25,7 @@
 				<div class="col-lg-12 col-md-12">
 					<h1>Nota Fiscal Eletrônica - FIT4</h1>
 				</div>
-				<div class="col-lg-6 col-md-6 panel panel-default">
+				<div class="col-lg-12 col-md-12 panel panel-default" style="border-right: 1px dotted #CCC">
 				<h3>Transmissão</h3>
 					<div class="upload_div">
 						<form method="post" action="controller.php" enctype="multipart/form-data">
@@ -39,7 +39,7 @@
 						</form>						
 					</div> <!-- UPLOAD DIV -->
 				</div>	<!-- COL-LG-6 COL-MD-6 -->	
-				<div class="col-lg-6 col-md-6 panel panel-default">
+				<div class="col-lg-12 col-md-12 panel panel-default">
 					<h3>Pedido de inutilização</h3>
 					<form method="post" action="controller.php">
 					<input type="hidden" name="function" value="inutilizacao">
@@ -82,7 +82,21 @@
 							</div>
 						</div>
 					</form>
-				</div> <!-- COL-LG-6 COL-MD-6 -->		
+				</div> <!-- COL-LG-6 COL-MD-6 -->	
+				<div class="col-lg-12 col-md-12 panel panel-default" style="border-right: 1px dotted #CCC">
+				<h3>Cancelamento</h3>
+					<div class="upload_div">
+						<form method="post" action="controller.php" enctype="multipart/form-data">
+							<div class="form-group">
+								<label for="file">XML File</label>
+								<input type="hidden" name="password" value="senha">
+								<input type="hidden" name="function" value="cancelamento">
+								<input type="file" name="xml" id="xml"><br />
+								<input type="submit" name="submit" value="Cancelar Nota" class="btn btn-default">
+							</div>
+						</form>						
+					</div> <!-- UPLOAD DIV -->
+				</div>	<!-- COL-LG-6 COL-MD-6 -->		
 			</div> <!-- ROW -->
 		</div> <!-- CONTAINER -->
 	</body>
