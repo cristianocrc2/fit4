@@ -1,6 +1,15 @@
 <?php
-
 	error_reporting(E_ALL);
+
+	$servidor = 'localhost';
+	$usuario = 'root';
+	$senha = '';
+	$banco = 'fit4';
+	// Conecta-se ao banco de dados MySQL
+	$mysqli = new mysqli($servidor, $usuario, $senha, $banco);
+	// Caso algo tenha dado errado, exibe uma mensagem de erro
+	if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
+
 	ini_set('display_errors', 'On');
 	include_once 'nfe/bootstrap.php';
 	use NFePHP\NFe\ToolsNFe;
@@ -50,12 +59,22 @@
 				$saveFile = true;
 				$retorno = $nfe->addProtocolo($pathNFefile, $pathProtfile, $saveFile); //Adiciona o protocolo a xml
 				$string = $retorno; //Recebe o xml protocolado
+				$nome_arquivo = 'NFe-FIT4-'.md5(uniqid(rand(), true)).'.xml';
 
-				header('Content-type: text/plain');
-				header('Content-Length: ' . strlen( $string ) ); 													//EFETUA O DOWNLOAD
-				header('Content-Disposition: attachment; filename="NFe-FIT4-'.md5(uniqid(rand(), true)).'.xml"');
+				$sql = "INSERT INTO notas (nota, protocolo) VALUES ('$nome_arquivo', '$pathProtfile')";
+				$query = $mysqli->query($sql);
 
-				echo $string;
+
+				if($query){
+					header('Content-type: text/plain');
+					header('Content-Length: ' . strlen( $string ) ); 													//EFETUA O DOWNLOAD
+					header('Content-Disposition: attachment; filename="'.$nome_arquivo.'"');
+					echo $string;
+				}else{
+					echo "Falha na inserção da nota no banco de dados. Contate o programador";
+				}
+
+				
 			}
 		}
 ######################################### FIM TRANSMISSÃO #########################################################################################
@@ -77,6 +96,11 @@
 		}
 
 ##########################################3# FIM INUTILIZAÇÃO ###############################################################################
+
+############################################ CANCELAMENTO ####################################################################################
+		
+
+############################################ FIM CANCELAMENTO #############################################################################
 
 	} else {
 		    echo "Possível ataque de upload de arquivo!\n";
